@@ -387,22 +387,39 @@
                     <div class="mapa">
                         <h3>Ubicación</h3>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6385.758896666383!2d-73.1437699!3d-36.8453631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669cb5a536e3947%3A0xa43c53360c8c2746!2sAutomotriz%20rfolch!5e0!3m2!1ses!2scl!4v1771184422296!5m2!1ses!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
                 <div class="formulario">
                     <h3>Solicita una Cita o Consulta</h3>
                     <form id="contactForm" name="contact" netlify netlify-honeypot="bot-field" hidden>
-    <!-- Campo oculto para honeypot (anti-spam) -->
-    <input name="bot-field" />
-    <!-- Tus campos existentes -->
-    <div class="form-group">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required>
-    </div>
-    <!-- ... resto de campos ... -->
-    <div class="form-group">
-        <button type="submit">Enviar</button>
-    </div>
-</form>
+                        <input name="bot-field" />  <!-- Campo oculto anti-spam -->
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Servicio de Interés</label>
+                            <select id="servicio" name="servicio" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="mec-general">Mecánica General</option>
+                                <option value="scanner">Scanner Automotriz</option>
+                                <option value="frenos">Frenos</option>
+                                <option value="suspension">Suspensión</option>
+                                <option value="mantenimiento">Mantenimiento Preventivo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
                 </div>
             </section>
         </div>
@@ -415,29 +432,3 @@
     <script>
         // JavaScript para cambiar pestañas
         const tabLinks = document.querySelectorAll('.tab-link');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const tabId = this.getAttribute('data-tab');
-
-                // Remover clase active de todos los links y contenidos
-                tabLinks.forEach(l => l.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-
-                // Agregar clase active al link y contenido seleccionado
-                this.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-
-        // Manejo del formulario
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Formulario enviado. Nos pondremos en contacto pronto.');
-            // Aquí podrías agregar lógica para enviar el formulario a un servidor
-        });
-    </script>
-</body>
-</html>

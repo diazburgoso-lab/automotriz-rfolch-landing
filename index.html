@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotriz rfolch - Taller Mecánico Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset y variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --color-negro-carbon: #1a1a1a;
+            --color-rojo-deportivo: #d32f2f;
+            --color-blanco: #ffffff;
+            --font-family: 'Arial', sans-serif;
+        }
+        body {
+            font-family: var(--font-family);
+            color: var(--color-blanco);
+            background-color: var(--color-negro-carbon);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* Header con pestañas */
+        header {
+            background-color: var(--color-negro-carbon);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-rojo-deportivo);
+        }
+        .tabs {
+            display: flex;
+            list-style: none;
+        }
+        .tabs li {
+            margin-left: 20px;
+        }
+        .tabs li a {
+            color: var(--color-blanco);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .tabs li a:hover, .tabs li a.active {
+            background-color: var(--color-rojo-deportivo);
+        }
+        /* Contenido de pestañas */
+        .tab-content {
+            display: none;
+            padding: 40px 0;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* Hero Section (para Home) */
+        .hero {
+            text-align: center;
+            background-color: #2a2a2a;
+            padding: 60px 20px;
+            border-radius: 10px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--color-rojo-deportivo);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            background-color: var(--color-rojo-deportivo);
+            color: var(--color-blanco);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #b71c1c;
+        }
+        /* Servicios */
+        .servicios h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--color-rojo-deportivo);
+        }
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .servicio {
+            background-color: #2a2a2a;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .servicio i {
+            font-size: 3rem;
+            color: var(--color-rojo-deportivo);
+            margin-bottom: 20px;
+        }
+        .servicio h3 {
+            margin-bottom: 15px;
+        }
+        /* Confianza */
+        .confianza h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--color-rojo-deportivo);
+        }
+        .estrellas {
+            text-align: center;
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+        .testimonios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .testimonio {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .testimonio p {
+            font-style: italic;
+        }
+        .testimonio .autor {
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--color-rojo-deportivo);
+        }
+        /* Contacto */
+        .contacto h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--color-rojo-deportivo);
+        }
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .info-contacto {
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .info-contacto h3 {
+            margin-bottom: 20px;
+            color: var(--color-rojo-deportivo);
+        }
+        .info-contacto p {
+            margin-bottom: 10px;
+        }
+        .horarios {
+            margin-top: 20px;
+        }
+        .horarios ul {
+            list-style: none;
+        }
+        .horarios li {
+            margin-bottom: 5px;
+        }
+        .mapa {
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .mapa iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 10px;
+        }
+        /* Formulario */
+        .formulario {
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        .formulario h3 {
+            margin-bottom: 20px;
+            color: var(--color-rojo-deportivo);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--color-negro-carbon);
+            color: var(--color-blanco);
+        }
+        .form-group button {
+            background-color: var(--color-rojo-deportivo);
+            color: var(--color-blanco);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .form-group button:hover {
+            background-color: #b71c1c;
+        }
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: var(--color-blanco);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .contacto-grid {
+                grid-template-columns: 1fr;
+            }
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tabs li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Automotriz rfolch</div>
+            <ul class="tabs">
+                <li><a href="#home" class="tab-link active" data-tab="home">Inicio</a></li>
+                <li><a href="#servicios" class="tab-link" data-tab="servicios">Servicios</a></li>
+                <li><a href="#confianza" class="tab-link" data-tab="confianza">Confianza</a></li>
+                <li><a href="#contacto" class="tab-link" data-tab="contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Pestaña Home -->
+        <div id="home" class="tab-content active">
+            <section class="hero">
+                <h1>Bienvenido a Automotriz rfolch</h1>
+                <p>Tu taller mecánico de confianza en San Pedro de la Paz. Reparaciones expertas con tecnología de vanguardia.</p>
+                <a href="https://wa.me/56962657034" class="cta-button">Contáctanos por WhatsApp</a>
+            </section>
+        </div>
+
+        <!-- Pestaña Servicios -->
+        <div id="servicios" class="tab-content">
+            <section class="servicios">
+                <h2>Nuestros Servicios</h2>
+                <div class="servicios-grid">
+                    <div class="servicio">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Mecánica General</h3>
+                        <p>Reparaciones completas para tu vehículo.</p>
+                    </div>
+                    <div class="servicio">
+                        <i class="fas fa-search"></i>
+                        <h3>Scanner Automotriz</h3>
+                        <p>Diagnóstico preciso con equipos avanzados.</p>
+                    </div>
+                    <div class="servicio">
+                        <i class="fas fa-car"></i>
+                        <h3>Frenos</h3>
+                        <p>Sistema de frenos seguros y eficientes.</p>
+                    </div>
+                    <div class="servicio">
+                        <i class="fas fa-wrench"></i>
+                        <h3>Suspensión</h3>
+                        <p>Ajustes y reparaciones para un viaje suave.</p>
+                    </div>
+                    <div class="servicio">
+                        <i class="fas fa-tools"></i>
+                        <h3>Mantenimiento Preventivo</h3>
+                        <p>Mantén tu auto en óptimas condiciones.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Pestaña Confianza -->
+        <div id="confianza" class="tab-content">
+            <section class="confianza">
+                <h2>Confianza y Calidad</h2>
+                <div class="estrellas">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>5.0 en Google Maps</span>
+                </div>
+                <div class="testimonios">
+                    <div class="testimonio">
+                        <p>"Excelente servicio, muy profesionales y puntuales. Recomiendo totalmente."</p>
+                        <div class="autor">- Juan Pérez</div>
+                    </div>
+                    <div class="testimonio">
+                        <p>"Repararon mi auto en tiempo récord y con calidad. 5 estrellas merecidas."</p>
+                        <div class="autor">- María González</div>
+                    </div>
+                    <div class="testimonio">
+                        <p>"El mejor taller de la zona. Tecnología de punta y precios justos."</p>
+                        <div class="autor">- Carlos López</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Pestaña Contacto -->
+        <div id="contacto" class="tab-content">
+            <section class="contacto">
+                <h2>Contacto y Ubicación</h2>
+                <div class="contacto-grid">
+                    <div class="info-contacto">
+                        <h3>Información de Contacto</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Pasaje Los Canelos, casa 1052, Michaihue, San Pedro de la Paz, Bío Bío, Chile</p>
+                        <p><i class="fas fa-phone"></i> +56 9 6265 7034</p>
+                        <div class="horarios">
+                            <h4>Horarios de Atención</h4>
+                            <ul>
+                                <li>Lunes a Viernes: 09:00-13:00, 14:00-19:00</li>
+                                <li>Sábados: 09:00-13:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mapa">
+                        <h3>Ubicación</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3200.0000!2d-73.14387718836564!3d-36.8451570399367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzYuODQ1MTU3MDM5OTM2NywtNzMuMTQzODc3MTg4MzY1NjQ!5e0!3m2!1ses!2scl!4v1600000000000!5m2!1ses!2scl" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="formulario">
+                    <h3>Solicita una Cita o Consulta</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Servicio de Interés</label>
+                            <select id="servicio" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="mec-general">Mecánica General</option>
+                                <option value="scanner">Scanner Automotriz</option>
+                                <option value="frenos">Frenos</option>
+                                <option value="suspension">Suspensión</option>
+                                <option value="mantenimiento">Mantenimiento Preventivo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <a href="https://wa.me/56962657034" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // JavaScript para cambiar pestañas
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tabId = this.getAttribute('data-tab');
+
+                // Remover clase active de todos los links y contenidos
+                tabLinks.forEach(l => l.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                // Agregar clase active al link y contenido seleccionado
+                this.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Manejo del formulario
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Formulario enviado. Nos pondremos en contacto pronto.');
+            // Aquí podrías agregar lógica para enviar el formulario a un servidor
+        });
+    </script>
+</body>
+</html>
